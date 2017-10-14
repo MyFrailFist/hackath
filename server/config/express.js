@@ -17,7 +17,7 @@ import path from 'path';
 import appRoot from 'app-root-path';
 import innograph from 'innograph'
 import postCtrl from '../controllers/post.controller';
-
+import pug from 'pug';
 
 const app = express();
 
@@ -32,6 +32,9 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use(compress());
 app.use(methodOverride());
+
+app.set('view engine', 'pug');
+app.set("views", path.join(__dirname, "../views"));
 
 // secure apps by setting various HTTP headers
 app.use(helmet());

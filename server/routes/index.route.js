@@ -5,6 +5,7 @@ import postRoutes from './post.route';
 import blackrockRoutes from './blackrock.route';
 import googleRoutes from './google.route';
 import yahooRoutes from './yahoo.route';
+import serviceRoutes from './service.route';
 
 const router = express.Router(); // eslint-disable-line new-cap
 
@@ -26,5 +27,7 @@ router.use('/blackrock', blackrockRoutes);
 router.use('/google', googleRoutes);
 
 router.use('/yahoo', yahooRoutes);
+
+router.use('/services', serviceRoutes);
 
 export default router;
