@@ -1,4 +1,4 @@
-import express from 'express';
+var express = require('express');
 const request = require('request');
 
 
@@ -39,4 +39,3 @@ exports.performance = function(req,res){
     return res.json(json);
   })
 }
-
