@@ -19,7 +19,7 @@ const envVarsSchema = Joi.object({
   JWT_SECRET: Joi.string().required()
     .description('JWT Secret required to sign'),
   MONGO_HOST: Joi.string().required()
-    .description('Mongo DB host url'),
+    .description('mongodb://123123123:123123123@ds137207.mlab.com:37207/purplejade'),
   MONGO_PORT: Joi.number()
     .default(27017)
 }).unknown()
@@ -36,7 +36,7 @@ const config = {
   mongooseDebug: envVars.MONGOOSE_DEBUG,
   jwtSecret: envVars.JWT_SECRET,
   mongo: {
-    host: envVars.MONGO_HOST,
+    host: 'mongodb://123123123:123123123@ds137207.mlab.com:37207/purplejade',
     port: envVars.MONGO_PORT
   }
 };
