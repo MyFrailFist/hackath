@@ -7,20 +7,18 @@ import googleCtrl from '../controllers/google.controller';
 const router = express.Router();
 
 router.route('/')
-  //get portfolio account
-  .get(googleCtrl.getPortfolio);
+  //get all the major indices
+  .get(googleCtrl.getAllData);
 
 
-router.route('/search/:nameParam')
+router.route('/companyNews/:symbol')
   /** GET /api/post/:postId - Get post */
-  .get(googleCtrl.search);
+  .get(googleCtrl.companyNews);
 
 
-router.route('/data/:id')
-  .get(googleCtrl.data);
+router.route('/historicalData/:symbol')
+  .get(googleCtrl.historicalData);
 /** Load post when API with postId route parameter is hit */
 
-router.route('/performance/:id')
-  .get(googleCtrl.performance);
 
 export default router;

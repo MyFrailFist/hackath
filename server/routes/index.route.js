@@ -3,6 +3,8 @@ import userRoutes from './user.route';
 import authRoutes from './auth.route';
 import postRoutes from './post.route';
 import blackrockRoutes from './blackrock.route';
+import googleRoutes from './google.route';
+import yahooRoutes from './yahoo.route';
 
 const router = express.Router(); // eslint-disable-line new-cap
 
@@ -20,5 +22,9 @@ router.use('/auth', authRoutes);
 router.use('/posts', postRoutes);
 
 router.use('/blackrock', blackrockRoutes);
+
+router.use('/google', googleRoutes);
+
+router.use('/yahoo', yahooRoutes);
 
 export default router;

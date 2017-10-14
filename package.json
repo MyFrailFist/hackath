@@ -102,6 +102,7 @@
     "express-jwt": "^5.3.0",
     "express-validation": "^1.0.2",
     "express-winston": "^2.4.0",
+    "google-finance": "^0.1.10",
     "graphql": "^0.10.1",
     "graphql-server-express": "latest",
     "graphql-tag": "^2.2.2",
@@ -124,6 +125,7 @@
     "reflect-metadata": "^0.1.10",
     "rxjs": "~5.0.2",
     "winston": "^2.3.1",
+    "yahoo-finance": "^0.3.3",
     "zone.js": "latest"
   },
   "devDependencies": {
