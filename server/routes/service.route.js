@@ -14,4 +14,7 @@ router.route('/goPage2/:formula')
 router.route('/goPage3/:formula')
 	.get(valueService.goPage3)
 
+router.route('/goPage2/services/services')
+	.get(valueService.attachValues)
+
 export default router;

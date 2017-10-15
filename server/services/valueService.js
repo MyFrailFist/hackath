@@ -98,14 +98,14 @@ exports.attachValues2 = function(formula, indicess){
 			
 			var gun = JSON.stringify(stockArray.module);
 			console.log(gun);
-			res.redirect('page3', {gun});
-			return callback(null,stockArray);
+			res.render("page3", {gun});
+			return callback(null,gun);
 		})
 }
 
 
 
-exports.attachValues = function(req,res){
+exports.attachValues = function(input, res){
 	//after selecting the group of stocks to study, attach the values require
 
 	//input the selected indices
@@ -127,7 +127,7 @@ exports.attachValues = function(req,res){
 		// 		return callback(null, stockArray);
 		// 	})
 		// }, 
-		function(callback){
+		function(callback1){
 			//attach api values
 			async.each(stockArray.module, function(item, cccb){
 				googleAPI.historicalData(item.symbol, function(err, response){
@@ -137,12 +137,12 @@ exports.attachValues = function(req,res){
 					return cccb(null);
 				})
 			}, function(err, response){
-				if(err) return callback(err);
-				return callback(null);
+				if(err) return callback1(err);
+				return callback1(null);
 			})
 
 		},
-		function(callback){
+		function(callback2){
 			//attach api values
 			console.log(stockArray.module);
 			async.each(stockArray.module ,function(stocki, ccccb){
@@ -153,16 +153,16 @@ exports.attachValues = function(req,res){
 					for (var lame in response){
 						stocki[lame] = response[lame];
 					}
-					console.log("hello", stocki);
+
 					return ccccb(null);
 				})
 			}, function(err, response){
-				console.log('end')
-				if(err) return callback(err);
-				return callback(null);
+
+				if(err) return callback2(err);
+				return callback2(null);
 			})
 		},
-		function(callback){
+		function(callback3){
 			//equation as a json
 			var equation = [
 				{"coeff": "0.2", "variable": "totalRevenue"},
@@ -171,17 +171,21 @@ exports.attachValues = function(req,res){
 
 			var stocksData = stockArray;
 			calcMajor(equation, stockArray.module, function(err, response){
-				if(err) return callback(err);
-				return callback(null,response)
+				if(err) return callback3(err);
+				return callback3(null,response)
 			})
 		}], function(err, results){
-			if(err) return(err);
-			
+			console.log(results);
 			var gun = JSON.stringify(stockArray.module);
-			console.log(gun);
+			//console.log(gun);
+			console.log('renderleh');
+			if(err) console.log(err);
+			// if(err) return callback(err);
+			// return callback(null, gun);
+			console.log('heloiwernfoiuwrbfieurbf');
 			res.render('page3', {gun});
-			return stockArray;
-		})
+		});
+
 }
 
 
