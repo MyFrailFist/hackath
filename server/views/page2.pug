@@ -1,0 +1,59 @@
+doctype html
+html
+  script(src='https://code.jquery.com/jquery-2.2.3.min.js')
+  script(src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js")
+  head
+    title Stock Index Selection
+    link(rel='stylesheet', type='text/css', href='page2.css')
+  body
+    h1 Stock Index Selection
+    p.boxed
+      | S&P 500
+      br
+      label.switch
+        input(type='checkbox')
+        span.slider
+    p.boxed
+      | Dow Jones
+      br
+      label.switch
+        input(type='checkbox')
+        span.slider
+    p.boxed
+      | Hang Seng
+      br
+      label.switch
+        input(type='checkbox')
+        span.slider
+    p.boxed
+      | Nikkei
+      br
+      label.switch
+        input(type='checkbox')
+        span.slider
+    p.boxed
+      | Shenzhen
+      br
+      label.switch
+        input(type='checkbox')
+        span.slider
+    p.boxed
+      | Shanghai
+      br
+      label.switch
+        input(type='checkbox')
+        span.slider
+    input#textFormula(type=hidden,name"textFormula", value=textFormula)
+    button#goPage3(onclick='goPage3()', type="button")
+script.
+    function goPage3(){
+      var textFor = document.getElementById("textFormula").value;
+        var indices = $("input[type='checkbox']").val();
+            $.ajax({
+                type:'GET',
+                url: "./../../services/goPage3/"+textFor,
+                success: function(){
+                }
+            })
+        }
+  

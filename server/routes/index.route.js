@@ -30,4 +30,8 @@ router.use('/yahoo', yahooRoutes);
 
 router.use('/services', serviceRoutes);
 
+router.get('/', function(req, res){
+	res.render("page1");
+})
+
 export default router;

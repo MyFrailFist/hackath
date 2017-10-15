@@ -1,0 +1,65 @@
+doctype html
+html
+  script(src='https://code.jquery.com/jquery-2.2.3.min.js')
+  script(src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js")
+  head
+    title Create Formula
+  body
+    h1 Create Formula
+    div
+      | Indicators
+      select#variables(onchange='insertVariable()')
+        option(value='') Select a variable
+        option(value='price') Price
+        option(value='currentPrice') Current Price
+        option(value='grossProfits') Gross Profit
+        option(value='totalCash') Total Cash
+        option(value='ebitda') EBITDA
+        option(value='totalDebt') Total Debt
+        option(value='quickRatio') Quick Ratio 
+        option(value='currentRatio') Current Ratio(Current Assets/Current Liabilities)
+        option(value='totalRevenue') Total Revenue
+        option(value='debtToEquity') Debt to Equity
+    script.
+      function SearchFilter() {
+      // Declare variables
+          var input, filter, ul, li, a, i;
+          input = document.getElementById('variables');
+          filter = input.value.toUpperCase();
+          ul = document.getElementById("myUL");
+          li = ul.getElementsByTagName('li');
+          // Loop through all list items, and hide those who don't match the search query
+          for (i = 0; i < li.length; i++) {
+            a = li[i].getElementsByTagName("a")[0];
+            if (a.innerHTML.toUpperCase().indexOf(filter) > -1) {
+            li[i].style.display = "";
+          } else {
+            li[i].style.display = "none";
+          }
+          }
+      }
+    div
+      | Formula:
+      input#txtInput.textbox(type='text')
+      p#done
+        button#sendItOff(type='button',onclick='clickoffPage3()' value='Done')
+    script.
+        function insertVariable(){
+              var dropdown = document.getElementById("variables");
+              var field = document.getElementById("txtInput");
+              field.value += dropdown.value;
+              document.getElementById("variables").selectedIndex = "0";
+          }
+
+          function clickoffPage3(){
+            var fieldFormula = document.getElementById("txtInput");
+            fieldFormula = JSON.stringify(fieldFormula.value);
+            console.log(fieldFormula);      
+                if (fieldFormula != undefined && fieldFormula != null) {
+                    window.location = 'services/goPage2/' + fieldFormula;
+                }
+            }
+          
+          
+        
+        
